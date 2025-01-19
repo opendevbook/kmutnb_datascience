@@ -25,6 +25,7 @@ RUN pip install --no-cache-dir \
     seaborn \
     scipy \
     plotly \
+    statsmodels \
     && pip install --upgrade pip
 
 # Expose Jupyter Lab's default port
