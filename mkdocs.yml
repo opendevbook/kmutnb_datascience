@@ -1,0 +1,22 @@
+site_name: Container for Data Science
+theme:
+  name: material
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - nl2br
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+
+plugins:
+  - search
+  - callouts
+
+copyright: Copyright &copy; 2016 - 2025 Sawangpong muadphet <sawangpongm@gmail.com>
