@@ -118,3 +118,9 @@ Save output to folder notebooks in system
 8. **Extensibility**: Developers can add extensions to JupyterLab, such as code linters, debuggers, and integrated terminals. This customization enables teams to tailor the development environment to their needs and improve collaborative efficiency.
 
 In summary, JupyterLab is beneficial for shared code development because it combines interactive coding, documentation, version control, and live collaboration, all within a flexible and extensible environment. This fosters productivity and streamlines collaboration among developers.
+
+
+## Clone Example Git Repository
+```
+git clone https://github.com/opendevbook/dockerjupyterlab
+```
