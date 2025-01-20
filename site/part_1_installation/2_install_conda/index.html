@@ -1,0 +1,1272 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../1_install_python/">
+      
+      
+        <link rel="next" href="../3_install_docker/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
+    
+    
+      
+        <title>Section 2 Conda Environment - Container for Data Science</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6f8fc17f.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#section-2-conda-environment" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Container for Data Science" class="md-header__button md-logo" aria-label="Container for Data Science" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Container for Data Science
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Section 2 Conda Environment
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Container for Data Science" class="md-nav__button md-logo" aria-label="Container for Data Science" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Container for Data Science
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Container Technology 2025
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Overview
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../overview/architecture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Section 1 Overview Container Architecture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Part 1 installation
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Part 1 installation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_install_python/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Section 1 Setup Environment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Section 2 Conda Environment
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Section 2 Conda Environment
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objective" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objective
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-features-of-conda" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Features of Conda
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Features of Conda">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-environment-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Environment Management:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-package-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Package Management:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-cross-platform" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Cross-Platform:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-precompiled-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Precompiled Packages:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install-anaconda-full-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install Anaconda (Full installation):
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Install Anaconda (Full installation):">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installation-for-a-single-user-normal-user" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation for a Single User (Normal User)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation for a Single User (Normal User)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Steps:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#open-anaconda-navigator-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      Open Anaconda Navigator App
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Open Anaconda Navigator App">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-we-have-to-run-conda-init-after-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why We Have to Run conda init After Installation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Why We Have to Run conda init After Installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-modifying-shell-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Modifying Shell Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-activating-conda-base-environment-automatically" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Activating Conda Base Environment Automatically
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-ensuring-proper-path-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Ensuring Proper PATH Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-enabling-conda-environment-activation-in-any-shell" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Enabling Conda Environment Activation in Any Shell
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#in-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      In Summary:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fix-permision" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fix Permision
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fix Permision">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#update-jupyter-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update Jupyter Lab
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-conda-environment-and-activate" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create Conda Environment and Activate
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary-of-common-conda-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary of Common Conda Commands
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_install_docker/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Section 3 Install Docker Desktop on Windows
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Part 2 docker jupyter
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Part 2 docker jupyter
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part_2_docker_jupyter/1_dockercomposejupyter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Section 1 Docker Engine for Data Science
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part_2_docker_jupyter/2_dockerfile1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Section 2 Dockerfile for Data Science Environment with Jupyter Lab
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part_2_docker_jupyter/3_docker_compose/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Section 3 Docker compose with Dockerfile
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objective" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objective
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-features-of-conda" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Features of Conda
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Features of Conda">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-environment-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Environment Management:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-package-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Package Management:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-cross-platform" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Cross-Platform:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-precompiled-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Precompiled Packages:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install-anaconda-full-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install Anaconda (Full installation):
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Install Anaconda (Full installation):">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installation-for-a-single-user-normal-user" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation for a Single User (Normal User)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation for a Single User (Normal User)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Steps:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#open-anaconda-navigator-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      Open Anaconda Navigator App
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Open Anaconda Navigator App">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-we-have-to-run-conda-init-after-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why We Have to Run conda init After Installation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Why We Have to Run conda init After Installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-modifying-shell-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Modifying Shell Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-activating-conda-base-environment-automatically" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Activating Conda Base Environment Automatically
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-ensuring-proper-path-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Ensuring Proper PATH Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-enabling-conda-environment-activation-in-any-shell" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Enabling Conda Environment Activation in Any Shell
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#in-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      In Summary:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fix-permision" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fix Permision
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fix Permision">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#update-jupyter-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update Jupyter Lab
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-conda-environment-and-activate" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create Conda Environment and Activate
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary-of-common-conda-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary of Common Conda Commands
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="section-2-conda-environment"><strong>Section 2</strong> Conda Environment</h1>
+<p>conda is a powerful package, dependency, and environment management tool widely used in Python programming, especially for scientific computing and data analysis. It is commonly associated with the Anaconda (full) and Miniconda (minimal) distributions.</p>
+<h3 id="objective">Objective</h3>
+<ul>
+<li>
+<p><strong>Successfully Install a Conda Environment</strong><br />
+  Ensure the Conda environment is installed and properly configured for use.</p>
+</li>
+<li>
+<p><strong>Understand Using Conda Prompt and JupyterLab</strong><br />
+  Learn how to utilize the Conda prompt for managing environments and running JupyterLab for interactive development.</p>
+</li>
+</ul>
+<h3 id="key-features-of-conda">Key Features of Conda</h3>
+<h4 id="1-environment-management"><strong>1. Environment Management</strong>:</h4>
+<ul>
+<li>Create isolated environments for different projects, each with its own Python version and packages.</li>
+<li>Avoid version conflicts and dependency issues.</li>
+</ul>
+<h4 id="2-package-management"><strong>2. Package Management</strong>:</h4>
+<ul>
+<li>Install, update, and manage packages seamlessly.</li>
+<li>Supports Python and non-Python packages.</li>
+</ul>
+<h4 id="3-cross-platform"><strong>3. Cross-Platform</strong>:</h4>
+<ul>
+<li>Works on Linux, macOS, and Windows.</li>
+</ul>
+<h4 id="4-precompiled-packages"><strong>4. Precompiled Packages</strong>:</h4>
+<ul>
+<li>Provides precompiled binaries, reducing installation errors.</li>
+</ul>
+<h2 id="install-anaconda-full-installation">Install Anaconda (Full installation):</h2>
+<ul>
+<li>Download from <a href="https://www.anaconda.com/download">Anaconda Office Site</a><br />
+<img alt="" src="../../assets/images/conda1.png" /></li>
+<li>Download Anacona Installers 64-bit Graphical Installer<br />
+<img alt="" src="../../assets/images/conda2.png" /></li>
+<li>Download success<br />
+<img alt="" src="../../assets/images/conda3.png" /></li>
+<li>Start installation<br />
+<img alt="" src="../../assets/images/conda4.png" /></li>
+<li>Accept Licence<br />
+<img alt="" src="../../assets/images/conda5.png" /></li>
+<li>Install Just Me mode</li>
+</ul>
+<h3 id="installation-for-a-single-user-normal-user">Installation for a Single User (Normal User)</h3>
+<ul>
+<li><strong>Scope</strong>: Installs Anaconda only for the current user, meaning other users on the same computer won’t have access to the installation.</li>
+<li><strong>Permissions</strong>: No need for administrator privileges.</li>
+<li><strong>Directory</strong>: The installation is done in the user's home directory (e.g., <code>C:\Users\YourUsername\Anaconda3</code>).</li>
+<li><strong>Environment Management</strong>: Can create environments and install packages only for that specific user.</li>
+<li><strong>Use Case</strong>: Ideal for personal use or when we don't have administrative access to the machine (e.g., in a corporate environment).</li>
+</ul>
+<h4 id="steps"><strong>Steps</strong>:</h4>
+<ol>
+<li>Choose the "Just Me" option during installation.</li>
+<li>Follow the on-screen instructions.</li>
+</ol>
+<p><img alt="" src="../../assets/images/conda6.png" /><br />
+* Install location. Conda will install in user folder<br />
+<img alt="" src="../../assets/images/conda7.png" /><br />
+* Select options [/] Register Anaconda3, and [/] Clear the package cache upon completion</p>
+<p><img alt="" src="../../assets/images/conda8.png" /><br />
+* Wait installing<br />
+<img alt="" src="../../assets/images/conda9.png" /><br />
+* Complete install</p>
+<p><img alt="" src="../../assets/images/conda13.png" /></p>
+<h2 id="open-anaconda-navigator-app">Open Anaconda Navigator App</h2>
+<p><img alt="" src="../../assets/images/conda14.png" /></p>
+<ul>
+<li>Open anaconda prompt from Navigator<br />
+<img alt="" src="../../assets/images/conda15.png" /></li>
+<li>Run <code>conda init</code><br />
+<img alt="" src="../../assets/images/conda16.png" /></li>
+</ul>
+<h3 id="why-we-have-to-run-conda-init-after-installation">Why We Have to Run <code>conda init</code> After Installation</h3>
+<p>Running <code>conda init</code> after installing Anaconda (or Miniconda) is necessary to configure your shell environment so that Conda commands can be recognized and executed correctly in the terminal.</p>
+<h4 id="1-modifying-shell-configuration"><strong>1. Modifying Shell Configuration</strong></h4>
+<ul>
+<li><strong>Purpose</strong>: <code>conda init</code> modifies the shell's configuration files (like <code>.bashrc</code>, <code>.zshrc</code>, <code>.bash_profile</code>, etc.) to add the necessary environment variables and configurations.</li>
+<li><strong>Effect</strong>: This ensures that the <code>conda</code> command is available globally in the terminal without needing to specify the full path to the Anaconda installation.</li>
+</ul>
+<h4 id="2-activating-conda-base-environment-automatically"><strong>2. Activating Conda Base Environment Automatically</strong></h4>
+<ul>
+<li>By running <code>conda init</code>, Conda sets up the shell to automatically activate the <strong>base environment</strong> when a terminal is opened. This way, you don’t need to manually activate the base environment every time you start a new terminal session.</li>
+</ul>
+<p>Example:<br />
+  - Without <code>conda init</code>, you'd need to type <code>conda activate</code> manually every time.<br />
+  - After running <code>conda init</code>, the terminal will automatically activate the base environment.</p>
+<h4 id="3-ensuring-proper-path-configuration"><strong>3. Ensuring Proper PATH Configuration</strong></h4>
+<ul>
+<li>Conda needs to be added to the system <code>PATH</code> for it to be accessible in any terminal session. <code>conda init</code> ensures that the appropriate paths are set up.</li>
+</ul>
+<h4 id="4-enabling-conda-environment-activation-in-any-shell"><strong>4. Enabling Conda Environment Activation in Any Shell</strong></h4>
+<ul>
+<li>Conda init ensures compatibility across different shells (bash, zsh, fish, etc.) by setting up the appropriate configurations for each shell. This makes it easier to use Conda on any system with different shell environments.</li>
+</ul>
+<h4 id="in-summary"><strong>In Summary</strong>:</h4>
+<p>Running <code>conda init</code> ensures that:<br />
+- Conda's commands are available in your terminal.<br />
+- The base environment is automatically activated.<br />
+- The system is configured to manage multiple environments effectively across different shell types.</p>
+<p>We only need to run <code>conda init</code> once, after which it will modify the necessary files to enable seamless use of Conda.</p>
+<h2 id="fix-permision">Fix Permision</h2>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>PermissionError: [Errno 13] Permission denied: &#39;C:\\Users\\sysadmin\\AppData\\Roaming\\jupyter\\runtime\\jpserver-20464-open.html&#39;
+</span></code></pre></div>
+<p><img alt="" src="../../assets/images/conda17.png" /></p>
+<ul>
+<li>Close anaconda Desktop and Re open again with Administrator</li>
+<li>Open anaconda prompt:</li>
+</ul>
+<p><img alt="" src="../../assets/images/conda18.png" /></p>
+<ul>
+<li>Copy link to browser</li>
+</ul>
+<p><img alt="" src="../../assets/images/conda19.png" /></p>
+<ul>
+<li>Jupyter lab web</li>
+</ul>
+<p><img alt="" src="../../assets/images/conda20.png" /></p>
+<h3 id="update-jupyter-lab">Update Jupyter Lab</h3>
+<p>Run this command to ensure your JupyterLab and Jupyter Server are up to date with the latest features, improvements, and security patches. <br />
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>pip install --upgrade jupyterlab jupyter_server
+</span></code></pre></div></p>
+<p><img alt="" src="../../assets/images/conda20.png" /></p>
+<h3 id="create-conda-environment-and-activate">Create Conda Environment and Activate</h3>
+<ul>
+<li>Start from (base) environment of Conda<br />
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>(base) conda create -n myenv python=3.12
+</span></code></pre></div></li>
+<li>This creates an environment named <code>myenv</code> with Python version 3.12<br />
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>(base) conda activate myenv
+</span></code></pre></div></li>
+</ul>
+<p><img alt="" src="../../assets/images/conda22.png" /><br />
+Accept [y] then enter:</p>
+<p><img alt="" src="../../assets/images/conda23.png" /></p>
+<p>install jupyterlab jupyter-server in myenv<br />
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>(myenv) C:\Users\sysadmin&gt;pip install --upgrade jupyterlab jupyter-server
+</span></code></pre></div></p>
+<h3 id="summary-of-common-conda-commands">Summary of Common Conda Commands</h3>
+<table>
+<thead>
+<tr>
+<th><strong>Command</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>conda create -n &lt;env_name&gt; python=X</code></td>
+<td>Create a new Conda environment with Python version <code>X</code>.</td>
+</tr>
+<tr>
+<td><code>conda activate &lt;env_name&gt;</code></td>
+<td>Activate the specified Conda environment.</td>
+</tr>
+<tr>
+<td><code>conda deactivate</code></td>
+<td>Deactivate the current Conda environment.</td>
+</tr>
+<tr>
+<td><code>conda env list</code></td>
+<td>List all available Conda environments.</td>
+</tr>
+<tr>
+<td><code>conda remove -n &lt;env_name&gt; --all</code></td>
+<td>Delete a specified Conda environment and all its packages.</td>
+</tr>
+<tr>
+<td><code>conda install &lt;package_name&gt;</code></td>
+<td>Install a package into the currently active Conda environment.</td>
+</tr>
+<tr>
+<td><code>conda update &lt;package_name&gt;</code></td>
+<td>Update a specific package in the active Conda environment.</td>
+</tr>
+<tr>
+<td><code>conda update conda</code></td>
+<td>Update Conda to the latest version.</td>
+</tr>
+<tr>
+<td><code>conda list</code></td>
+<td>List all installed packages in the active Conda environment.</td>
+</tr>
+<tr>
+<td><code>conda search &lt;package_name&gt;</code></td>
+<td>Search for a package in Conda repositories.</td>
+</tr>
+<tr>
+<td><code>conda info</code></td>
+<td>Display information about the Conda installation.</td>
+</tr>
+<tr>
+<td><code>conda clean --all</code></td>
+<td>Remove unnecessary files, caches, and unused packages to free up space.</td>
+</tr>
+<tr>
+<td><code>conda export &gt; environment.yml</code></td>
+<td>Export the active environment to a <code>.yml</code> file for sharing or backup.</td>
+</tr>
+<tr>
+<td><code>conda env create -f environment.yml</code></td>
+<td>Create an environment from a <code>.yml</code> file.</td>
+</tr>
+<tr>
+<td><code>conda config --add channels &lt;name&gt;</code></td>
+<td>Add a new channel (repository) to Conda configuration.</td>
+</tr>
+<tr>
+<td><code>conda config --show</code></td>
+<td>Display the current Conda configuration.</td>
+</tr>
+<tr>
+<td><code>conda uninstall &lt;package_name&gt;</code></td>
+<td>Uninstall a specific package from the active Conda environment.</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2016 - 2025 Sawangpong muadphet <sawangpongm@gmail.com>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.88dd0f4e.min.js"></script>
+      
+    
+  </body>
+</html>
