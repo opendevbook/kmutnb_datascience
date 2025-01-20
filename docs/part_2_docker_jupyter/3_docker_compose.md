@@ -120,7 +120,8 @@ Save output to folder notebooks in system
 In summary, JupyterLab is beneficial for shared code development because it combines interactive coding, documentation, version control, and live collaboration, all within a flexible and extensible environment. This fosters productivity and streamlines collaboration among developers.
 
 
-## Clone Example Git Repository
+## Clone Example Git Repository 
+Repository
 ```
 git clone https://github.com/opendevbook/dockerjupyterlab
 ```
